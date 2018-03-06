@@ -1,8 +1,33 @@
 
 var eventType = "music";
 var address;
-var dateRange = "2017080100-2017103000";
+var dateRange;
 var noOfRecords = 10;
+
+// CURRENT DATE
+var today = new Date();
+console.log("today = " + today);
+
+// UPDATE THE FORMAT FOR USING MOMENTJS
+var newToday = moment(today).format("YYYYMMDD"); 
+console.log("newToday= " + newToday);
+
+
+// FUNCTION TO CALCULATE LAST WEEK'S DATE
+function getNextWeek(){
+    var nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+    return nextWeek ;
+}
+
+var nextWeek = getNextWeek();
+console.log("nextWeek= " + nextWeek);
+
+var newNextWeek = moment(nextWeek).format("YYYYMMDD"); 
+console.log("newNextWeek= " + newNextWeek);
+
+//UPDATE VALUES IN DATERANGE
+var dateRange = newToday + "00" + "-" + newNextWeek + "00";
+console.log("dateRange= " + dateRange);
 
 //CREATE AN EVENT OBJECT TO CAPTURE THE  EVENT RELATED INFORMAION
 
@@ -29,7 +54,7 @@ function queryEvents(eventType, address, noOfRecords, dateRange)
       app_key: "Gp5KnQs4HTZ9gpPJ", //APP KEY FOR USING "EVENTFUL" API
       q: eventType, //SEARCH ON THE TYPE OF EVENT e.g, MUSIC, FAMILY, BUSINESS
       where: address, //THIS COULD BE CITY NAME OR ADDRESS
-      "date": dateRange, //"2017080100-2017103000"
+      "date": dateRange, // 2018010100-2018033000
       page_size: noOfRecords, //NO. OF RECORDS TO FETCH FROM THE QUERY
       sort_order: "popularity", //SORTING RELEVANCE
    };
