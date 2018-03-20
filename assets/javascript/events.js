@@ -13,7 +13,7 @@ var newToday = moment(today).format("YYYYMMDD");
 console.log("newToday= " + newToday);
 
 
-// FUNCTION TO CALCULATE LAST WEEK'S DATE
+// FUNCTION TO CALCULATE NEXT WEEK'S DATE
 function getNextWeek(){
     var nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
     return nextWeek ;
